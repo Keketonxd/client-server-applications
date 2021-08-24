@@ -19,7 +19,8 @@ def get_data(input_word):
 
 for word in words:
     print(get_data(word))
-    word = bytes(word, encoding='utf-8')
+    try:
+        word = bytes(word, encoding='utf-8')
+    except BytesWarning:
+        print(f'Слово {word} не преобразуется в байтовый тип!')
     print(get_data(word))
-
-print('ez')

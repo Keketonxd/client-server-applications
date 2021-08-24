@@ -23,6 +23,10 @@
 
 НАРУШЕНИЕ обозначенных условий - задание не выполнено!!!
 """
+import chardet
 
-with open('Урок 1. Практическое задание/test_file.txt', 'r', encoding='utf-8') as f:
-    print(f.read())
+with open('test_file.txt', 'rb') as f:
+    text = f.read()
+    encoding = chardet.detect(text)
+    text = text.decode(encoding['encoding']).encode('utf-8')
+    print(text.decode('utf-8'))
