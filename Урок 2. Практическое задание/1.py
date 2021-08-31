@@ -8,8 +8,6 @@ topics = ['Название ОС',  'Код продукта',
           'Изготовитель системы', 'Тип системы']
 for_csv = []
 
-# Что-то странное было с кодировкой, а при перезаписи получались пустые строки между данными
-
 
 def recoder():
     for file in files:
@@ -18,14 +16,8 @@ def recoder():
             encoding = chardet.detect(text)
             text = text.decode(encoding['encoding'])
 
-        with open(file, 'w', encoding='utf-8') as f:
+        with open(file, 'w', encoding='utf-8', newline='') as f:
             f.write(text)
-
-        with open(file, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-        with open(file, 'w', encoding='utf-8') as f:
-            [f.write(line) for line in lines if line.strip()]
 
 
 def get_data(list_of_files):
